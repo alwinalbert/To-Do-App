@@ -17,13 +17,13 @@ export default function TodoApp(): JSX.Element {
   const [input, setInput] = useState<string>("");
   const [filter, setFilter] = useState<string>("all");
 
-  // Load tasks from localStorage on initial render
+  
   useEffect(() => {
     const storedTasks: Task[] = JSON.parse(localStorage.getItem("tasks") || "[]");
     setTasks(storedTasks);
   }, []);
 
-  // Save tasks to localStorage on tasks update
+  
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
@@ -53,7 +53,8 @@ export default function TodoApp(): JSX.Element {
   });
 
   return (
-    <div className="flex flex-col align-items-center justify-center w-md h-screen mx-auto p-4">
+    <div className="bg-blue-300">
+    <div className="flex flex-col align-items-center justify-center w-md h-screen mx-auto p-4 ">
       <h1 className="text-2xl font-bold text-center mb-4"> My Routine</h1>
       <div className="flex gap-2 mb-4">
         <Input
@@ -79,7 +80,7 @@ export default function TodoApp(): JSX.Element {
                     checked={task.completed}
                     onCheckedChange={() => toggleTask(task.id)}
                   />
-                  <span className={task.completed ? "line-through text-blue-700" : ""}>
+                  <span className={task.completed ? "line-through text-black" : ""}>
                     {task.text}
                   </span>
                 </div>
@@ -91,6 +92,7 @@ export default function TodoApp(): JSX.Element {
           </div>
         </TabsContent>
       </Tabs>
+    </div>
     </div>
   );
 }
